@@ -13,19 +13,20 @@ if a * b > 1000:
 else:
     print("Product =", a*b)
 
+# 3
 lst = [1,2,3,4,5,1]
 if lst[0] == lst[-1]:
     print("True")
 else:
     print("False")
 
-# 3
+# 4
 a = [25, 12, 30, 35, 90, 8, 10]
 for i in range(len(a)):
     if a[i] % 5 == 0:
         print(a[i])
 
-# 4
+# 5
 str = "Emma is a good developer. Emma is also a writer"
 lst = list(str.split(" "))
 print(lst)
@@ -37,7 +38,7 @@ for i in range(len(lst)):
 
 print(count)
 
-# 5
+# 6
 l1 = [1,2,3,4,5,6,7,8,9]
 l2 = [10,11,12,13,14,15,16,17,18]
 l3 = []
@@ -54,7 +55,7 @@ while k < i or k < j:
 
 print(l3)
 
-# 6
+# 7
 s1 = "hamzarehman"
 s2 = "lol"
 
@@ -64,14 +65,14 @@ s3 = s1[:a] + s2 + s1[a:]
 
 print(s3)
 
-# 7
+# 8
 s1 = "italy"
 s2 = "pakistan"
 
 s3 = s1[0] + s2[0] + s1[(int(len(s1) / 2))] + s2[(int(len(s2) / 2))] + s1[-1] + s2[-1]
 print(s3)
 
-# 8
+# 9
 a = "haMzA$Re&Hma(N"
 lower, upper, special = 0, 0, 0
 
@@ -85,7 +86,7 @@ for i in range(len(a)):
 
 print("Lowercase =", lower, "\nUppercase =", upper, "\nSpecial chars =", special)
 
-# 9
+# 10
 str = "USA is comprised of three alphabets U, S and A collectively usa or USA"
 str = str.upper()
 
@@ -99,7 +100,7 @@ for i in range(len(lst)):
 
 print("USA occured", count, "times.")
 
-# 10
+# 11
 str = "ham23za78reh891m2an"
 lst = []
 for i in range(len(str)):
@@ -113,7 +114,7 @@ for i in range(len(lst)):
 
 print("Sum =", sum, "\nAverage =", (sum / len(lst)))
 
-# 11
+# 12
 from collections import Counter
 
 a = "mississippi"
