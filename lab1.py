@@ -150,6 +150,78 @@ sampleList[2] = sampleList[4]
 sampleList[-1] = sampleList[4]
 
 print(sampleList)
-'''
+
 
 # 3
+sampleList = [11, 45, 8, 23, 14, 12, 78, 45, 89]
+l = []
+for i in range(len(sampleList)):
+    if i % 3 == 0:
+        l.append(i)
+
+l1 = sampleList[(int(l[0])):(int(l[1]))]
+l2 = sampleList[(int(l[1])):(int(l[2]))]
+l3 = sampleList[(int(l[2])):]
+
+print("Three equal chunks of sampleList:\n", l1, l2, l3)
+
+
+# 4
+from collections import Counter
+
+sampleList = [11, 45, 8, 11, 23, 45, 23, 45, 89]
+dict = {}
+
+for i in sampleList:
+    if i in dict:
+        dict[i] += 1
+    else:
+        dict[i] = 1
+
+print(dict)
+
+res = Counter(sampleList)
+
+print(res)
+
+
+
+# 5
+firstList = [2, 3, 4, 5, 6, 7, 8]
+secondList = [4, 9, 16, 25, 36, 49, 64]
+
+res = zip(firstList, secondList)
+res = set(res)
+
+print(res)
+
+
+# 6
+firstSet = {23, 42, 65, 57, 78, 83, 29}
+secondSet = {57, 83, 29, 67, 73, 43, 48}
+
+s = firstSet.intersection(secondSet)
+
+for i in s:
+    firstSet.remove(i)
+
+print("Intersection:", s)
+print(firstSet)
+
+
+# 7
+firstSet = {57, 83, 29}
+secondSet = {57, 83, 29, 67, 73, 43, 48}
+
+a = firstSet.issubset(secondSet)
+b = firstSet.issuperset(secondSet)
+
+print("firstSet subset of secondSet:", a, "\nfirstSet superset of secondSet:", b)
+
+for i in firstSet:
+    secondSet.remove(i)
+
+print("After removing:\n", secondSet)
+'''
+
+# 8
