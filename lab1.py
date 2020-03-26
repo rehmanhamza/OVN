@@ -264,5 +264,4 @@ new_lst = tuple(new_lst)
 print(new_lst)
 print("Minimum in new_lst =", min(new_lst), "\nMaximum in tuple =", max(new_lst))
 
-string = "Python is the best"
-print(string)
+# Lab 1 finished.
