@@ -13,6 +13,17 @@ if a * b > 1000:
 else:
     print("Product =", a*b)
 
+# 2
+lst = [1,2,3,4,5]
+
+for i in range(len(lst)):
+    lst[i] = int(lst[i])
+    if i-1 < 0:
+        print(lst[i])
+    else:
+        print(lst[i] + lst[i-1])
+
+
 # 3
 lst = [1,2,3,4,5,1]
 if lst[0] == lst[-1]:
@@ -222,6 +233,35 @@ for i in firstSet:
     secondSet.remove(i)
 
 print("After removing:\n", secondSet)
-'''
+
 
 # 8
+rollNumber = [47, 64, 69, 37, 76, 83, 95, 97]
+sampleDict ={"John":47, "Emma":69, "Kelly":76, "Jason":97}
+l1 = []
+
+for i in rollNumber:
+    if i in sampleDict.values():
+        l1.append(i)
+
+rollNumber = list(l1)
+
+print(rollNumber)
+
+
+# 9
+speed = {"jan":47, "feb":52, "march":47, "April":44, "May":52, "June":53, "july":54, "Aug":44, "Sept":54}
+lst = speed.values()
+lst = list(set(lst))
+
+print(lst)
+
+
+# 10
+sampleList = [87, 52, 44, 53, 54, 87, 52, 53]
+new_lst = list(set(sampleList))
+new_lst = tuple(new_lst)
+
+print(new_lst)
+print("Minimum in new_lst =", min(new_lst), "\nMaximum in tuple =", max(new_lst))
+'''
