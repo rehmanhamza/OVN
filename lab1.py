@@ -1,6 +1,5 @@
 # Exercise SET 1
 
-'''
 # 1
 a = input("Enter num1: ")
 b = input("Enter num2: ")
@@ -264,4 +263,3 @@ new_lst = tuple(new_lst)
 
 print(new_lst)
 print("Minimum in new_lst =", min(new_lst), "\nMaximum in tuple =", max(new_lst))
-'''
