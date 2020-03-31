@@ -60,6 +60,22 @@ a = np.delete(a, 1, axis=1)
 a = np.insert(a, 1, new_column, axis=1)
 
 print(a)
-'''
+
 
 # Exercise SET 4
+
+# 1
+df = pd.read_csv("sales_data.csv")
+profit_list = df['total_profit'].tolist()
+months = df['month_number'].tolist()
+
+plt.plot(months, profit_list)
+plt.xticks(months)
+plt.yticks(np.arange(100000, 600000, 100000))
+plt.xlabel("Months")
+plt.ylabel("Profits")
+plt.title("Company profit per month")
+plt.show()
+'''
+
+# 2
