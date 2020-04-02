@@ -76,6 +76,108 @@ plt.xlabel("Months")
 plt.ylabel("Profits")
 plt.title("Company profit per month")
 plt.show()
-'''
+
 
 # 2
+df = pd.read_csv("sales_data.csv")
+profit_list = df['total_profit'].tolist()
+months = df['month_number'].tolist()
+
+plt.plot(months, profit_list, label='Profit data of last year', color='r', marker='o', markerfacecolor='k', linestyle='dashed', linewidth=3)
+plt.title('Company profit per month')
+plt.xticks(months)
+plt.yticks(np.arange(100000, 600000, 100000))
+plt.legend()
+plt.show()
+
+
+# 3
+df = pd.read_csv("sales_data.csv")
+months = df['month_number'].tolist()
+faceCream = df['facecream'].tolist()
+faceWash = df['facewash'].tolist()
+toothPaste = df['toothpaste'].tolist()
+bathingSoap = df['bathingsoap'].tolist()
+shampoo = df['shampoo'].tolist()
+moisturizer = df['moisturizer'].tolist()
+
+plt.plot(months, faceCream, label='facecream sales Data', color='b', marker='o', linewidth=3)
+plt.plot(months, faceWash, label='facewash sales Data', color='g', marker='o', linewidth=3)
+plt.plot(months, toothPaste, label='toothpaste sales Data', color='r', marker='o', linewidth=3)
+plt.plot(months, bathingSoap, label='bathingsoap sales Data', color='c', marker='o', linewidth=3)
+plt.plot(months, shampoo, label='shampoo sales Data', color='m', marker='o', linewidth=3)
+plt.plot(months, moisturizer, label='moisturizer sales Data', color='k', marker='o', linewidth=3)
+
+plt.xlabel('Month Number')
+plt.ylabel('Number of units Sold')
+plt.xticks(months)
+plt.yticks(np.arange(1000, 20000, 2000))
+plt.legend()
+plt.show()
+
+
+# 4
+df = pd.read_csv("sales_data.csv")
+months = df['month_number'].tolist()
+toothPaste = df['toothpaste'].tolist()
+
+plt.scatter(months, toothPaste, label='toothpaste Sales Data', alpha=0.5)
+plt.xlabel('Month Number')
+plt.ylabel('Number of units Sold')
+plt.xticks(months)
+plt.yticks(np.arange(4500, 9000, 500))
+plt.legend(loc='upper left')
+plt.grid(True, linewidth=1, linestyle="--")
+plt.show()
+
+
+# 5
+df = pd.read_csv("sales_data.csv")
+months = df['month_number'].tolist()
+bathingSoap = df['bathingsoap'].tolist()
+
+plt.bar(months, bathingSoap, label='bathingsoap Sales Data')
+plt.xlabel('Month Number')
+plt.ylabel('Number of units Sold')
+plt.xticks(months)
+plt.yticks(np.arange((min(bathingSoap) - 100), (max(bathingSoap) + 500), 1000))
+plt.legend(loc = 'upper left')
+plt.show()
+
+
+# 6
+df = pd.read_csv("sales_data.csv")
+profit_list = df['total_profit'].tolist()
+profit_range = list(np.arange((min(profit_list) - 5000), (max(profit_list) + 5000), 50000))
+
+plt.hist(profit_list, profit_range, label='Profit Data')
+plt.xticks(profit_range)
+plt.legend(loc='upper right')
+plt.show()
+
+
+# 7
+df = pd.read_csv("sales_data.csv")
+months = df['month_number'].tolist()
+bathingSoap = df['bathingsoap'].tolist()
+faceWash = df['facewash'].tolist()
+
+plt.subplot(2,1,1)
+plt.plot(months, bathingSoap, label='bathingsoap Sales Data', color='g', marker='o', linewidth=3)
+plt.xticks(months)
+plt.ylabel('Number of units Sold')
+plt.legend(loc='upper left')
+plt.subplot(2,1,2)
+plt.plot(months, faceWash, label='facewash Sales Data', color='r', marker='o', linewidth=3)
+plt.xticks(months)
+#plt.title("facewash Sales Data")
+plt.xlabel("Month Number")
+plt.ylabel('Number of units Sold')
+plt.legend(loc='upper left')
+
+plt.show()
+
+
+# Exercise SET 5
+'''
+# 1
