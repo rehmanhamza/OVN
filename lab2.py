@@ -2,10 +2,10 @@ import numpy as np
 import math
 import pandas as pd
 import matplotlib.pyplot as plt
+import json
 
 # Exercise SET 3
 
-'''
 #1
 #a = np.array([[1,2], [3,4], [5,6], [7,8]])
 a = np.empty([4,2], dtype = np.uint16)
@@ -179,5 +179,41 @@ plt.show()
 
 
 # Exercise SET 5
-'''
+
 # 1
+with open("states.json") as file:
+    data = json.load(file)
+
+print(type(data))
+print(data)
+
+
+# 2
+with open("states.json") as file:
+    python_dict = json.load(file)
+
+print(type(python_dict))
+
+pyhton_to_json = json.dumps(python_dict)
+
+print(type(pyhton_to_json))
+print(pyhton_to_json)
+
+
+# 4
+with open("states.json") as file:
+    data = json.load(file)
+
+j_data = json.dumps(data, sort_keys=True, indent=4)
+print(type(j_data))
+print(j_data)
+
+
+# 6
+with open("states.json") as file:
+    data = json.load(file)
+
+with open("new_states.json", "w") as file:
+    json.dump(data, file, indent=2)
+
+# Lab 2 finished.
