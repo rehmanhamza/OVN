@@ -26,7 +26,7 @@ print(b)
 
 # 4
 a = np.array([[3 ,6, 9, 12], [15 ,18, 21, 24], [27 ,30, 33, 36], [39 ,42, 45, 48], [51 ,54, 57, 60]])
-a = a[::2, 1::2]
+a = a[1::2, ::2]
 print(a)
 
 
@@ -148,10 +148,13 @@ plt.show()
 # 6
 df = pd.read_csv("sales_data.csv")
 profit_list = df['total_profit'].tolist()
-profit_range = list(np.arange((min(profit_list) - 5000), (max(profit_list) + 5000), 50000))
-
+profit_range = list(np.arange((min(profit_list) - 5000), (max(profit_list) + 50000), 50000))
+#profit_range =[178300,228300,278300,328300,378300,478300]
+print(profit_range)
+print(profit_list)
 plt.hist(profit_list, profit_range, label='Profit Data')
 plt.xticks(profit_range)
+
 plt.legend(loc='upper right')
 plt.show()
 
