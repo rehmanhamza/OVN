@@ -687,13 +687,13 @@ def plot3Dbars(t):
 
 
 def main():
-    NMC = 2 # number of monti carlo simulation
+    NMC = 50 # number of monti carlo simulation
     node_pairs_realizations = []
     stream_conn_list = []
     lines_state_list = []
     for i in range(NMC):
         print('Monte - Carlo Realization #{:d}'.format(i + 1))
-        network = Network('nodes_9.json', nch=10, upgrade_line='DB') # number of channels
+        network = Network('nodes_9.json', nch=10, upgrade_line='DF') # number of channels
         # creates nodes and line objects
         network.connect()  # connects the net by setting the line \ successive attribute with the node object at the end of the line
         #network.draw()
@@ -748,10 +748,10 @@ def main():
     [avg_snr_list.append(np.mean(list(filter(lambda x: x != 0, snr_list)))) for snr_list in snr_conns]
 
     print('\n')
-    print('Line  to upgrade: {}', format(max(avg_congestion, key=avg_congestion.get)))
-    print('Avg  Total Traffic: {:.2 f} Tbps', format(np.mean(traffic_list) * 1e-3))
-    print('Avg Lighpath Bitrate: {:.2f} Gbps ', format(np.mean(avg_rbl_list)))
-    print('Avg Lighpath SNR: {:.2f} dB', format(np.mean(avg_snr_list)))
+    print('Line  to upgrade: {}'.format(max(avg_congestion, key=avg_congestion.get)))
+    print('Avg  Total Traffic: {:.2f} Tbps'.format(np.mean(traffic_list) * 1e-3))
+    print('Avg Lighpath Bitrate: {:.2f} Gbps '.format(np.mean(avg_rbl_list)))
+    print('Avg Lighpath SNR: {:.2f} dB'.format(np.mean(avg_snr_list)))
     for id_mcr in range(NMC):
         plt.hist(snr_conns[id_mcr], bins=10)
         plt.title('SNR Distribution [dB]')

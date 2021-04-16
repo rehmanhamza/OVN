@@ -522,7 +522,7 @@ network = Network('nodes.json')
 network.connect()
 node_labels = list(network.nodes.keys())
 connections = []
-for i in range(1000):
+for i in range(100):
     shuffle(node_labels)
     connection = Connection(node_labels[0], node_labels[-1], 1)
     connections.append(connection)

@@ -1,4 +1,5 @@
 import json
+import signal
 from builtins import list
 from random import shuffle
 
@@ -638,21 +639,22 @@ network = Network('nodes.json')
 network.connect()
 node_labels = list(network.nodes.keys())
 connections = []
-for i in range(1000):
+for i in range(100):
     shuffle(node_labels)
     connection = Connection(node_labels[0], node_labels[-1])
     connections.append(connection)
 
-streamed_connections = network.stream(connections, best='snr', transceiver='shannon')
+#signal.signal(signal.SIGSEGV, signal.SIG_IGN)
+streamed_connections = network.stream(connections, best='snr', transceiver='fixed-rate')
 snrs = [connection.snr for connection in streamed_connections]
 plt.hist(snrs, bins=10)
-plt.title('SNR Distribution')
+plt.title('SNR Distribution - fixed-rate')
 plt.show()
 
 rbs = [connection.calculate_capacity() \
        for connection in streamed_connections]
 plt.hist(rbs, bins=10)
-plt.title('Bitrate Distribution [Gbps]')
+plt.title('Bitrate Distribution [Gbps] - fixed-rate')
 plt.show()
 
 print('Total Capacity: {:.2f} Tbps'.format(np.sum(rbs) * 1e-3))

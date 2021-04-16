@@ -308,7 +308,7 @@ class Line(object):
 
 
 class Network(object):
-    def __init__(self, json_path, nch=10, upgrade_line =''):
+    def __init__(self, json_path, nch=20, upgrade_line =''):
         node_json = json.load(open(json_path, 'r'))
         self._nodes = {}
         self._lines = {}
@@ -694,7 +694,7 @@ def main():
     lines_state_list = []
     for i in range(NMC):
         print('Monte - Carlo Realization #{:d}'.format(i + 1))
-        network = Network('nodes.json', nch=10, upgrade_line='AC') # number of channels
+        network = Network('nodes.json', nch=20, upgrade_line='DB')  # number of channels
         # creates nodes and line objects
         network.connect()  # connects the net by setting the line \ successive attribute with the node object at the end of the line
         #network.draw()
@@ -752,14 +752,14 @@ def main():
     [avg_snr_list.append(np.mean(list(filter(lambda x: x != 0, snr_list)))) for snr_list in snr_conns]
     print('\n')
 
-    print('Line  to upgrade: {}', format(max(avg_congestion, key=avg_congestion.get)))
-    print('Avg  Total Traffic: {:.2 f} Tbps', format(np.mean(traffic_list) * 1e-3))
-    print('Avg Lighpath Bitrate: {:.2f} Gbps ', format(np.mean(avg_rbl_list)))
-    print('Avg Lighpath SNR: {:.2f} dB', format(np.mean(avg_snr_list)))
-    for id_mcr in range(NMC):
-        plt.hist(snr_conns[id_mcr], bins=10)
-        plt.title('SNR Distribution [dB]')
-        plt.show()
+    print('Line  to upgrade: {}'.format(max(avg_congestion, key=avg_congestion.get)))
+    print('Avg  Total Traffic: {:.2f} Tbps'.format(np.mean(traffic_list) * 1e-3))
+    print('Avg Lighpath Bitrate: {:.2f} Gbps '.format(np.mean(avg_rbl_list)))
+    print('Avg Lighpath SNR: {:.2f} dB'.format(np.mean(avg_snr_list)))
+    #for id_mcr in range(NMC):
+    #    plt.hist(snr_conns[id_mcr], bins=10)
+    #    plt.title('SNR Distribution [dB]')
+    #    plt.show()
 
         # plt.hist(rbl_conns[id_mcr], bins=10)
         # plt.title('Lightpath Capacity Distribution [Gbps]')

@@ -269,7 +269,7 @@ class Line(object):
         self._amplifiers = int(np.ceil(self._length / 80e3))
         self._span_length = self._length / self._amplifiers
         # Set Gain to transparency
-        self._noise_figure = 7 # increased noise figure to see more results such as different rates for the lightpaths bcz the rate is lower
+        self._noise_figure = 14 # increased noise figure to see more results such as different rates for the lightpaths bcz the rate is lower
         # Physical Parameters of the Fiber
         self._alpha = 4.6e-5
         self._beta = 21.27e-27
@@ -696,7 +696,7 @@ def main():
     for node_pair in node_pairs:
         connection = Connection(node_pair[0], node_pair[-1], float(T.loc[node_pair[0], node_pair[-1]]))
         connections.append(connection)  # list of connection objects
-    streamed_connections = network.stream(connections, best='snr', transceiver='shannon')
+    streamed_connections = network.stream(connections, best='snr', transceiver='fixed-rate')
     snrs = []
     [snrs.extend(connection.snr) for connection in streamed_connections]
     rbl = []
@@ -705,27 +705,27 @@ def main():
             rbl.append(lightpath.bitrate)
     # Plot
     plt.hist(snrs, bins=10)
-    plt.title('SNR Distribution[dB]')
+    plt.title('SNR Distribution[dB] - fixed-rate')
     plt.show()
     rbc = [connection.calculate_capacity() for connection in streamed_connections]
     plt.hist(rbc, bins=10)
-    plt.title('Connection Capacity Distribution[Gbps]')
+    plt.title('Connection Capacity Distribution[Gbps] - fixed-rate')
     plt.show()
     plt.hist(rbl, bins=10)
-    plt.title('Lightpaths Capacity Distribution[Gbps]')
+    plt.title('Lightpaths Capacity Distribution[Gbps] - fixed-rate')
     plt.show()
     s = pd.Series(data=[0.0] * len(node_labels), index=node_labels)
     df = pd.DataFrame(0.0, index=s.index, columns=s.index, dtype=s.dtype)
-    print(df)
+    #print(df)
     for connection in streamed_connections:
         df.loc[connection.input_node, connection.output_node] = connection.bitrate
     print(df)
     plot3Dbars(t)
     plot3Dbars(df.values)
-    print('Avg SNR: {:.2f} dB', format(np.mean(list(filter(lambda x: x != 0, snrs)))))
-    print('Total Capacity Connections: {:.2f} Tbps ', format(np.sum(rbc) * 1e-3))
-    print('Total Capacity Lightpaths: {:.2f} Tbps', format(np.sum(rbl) * 1e-3))
-    print('AvgCapacity: {:.2 f} Gbps', format(np.mean(rbc)))
+    print('Avg SNR: {:.2f} dB'.format(np.mean(list(filter(lambda x: x != 0, snrs)))))
+    print('Total Capacity Connections: {:.2f} Tbps '.format(np.sum(rbc) * 1e-3))
+    print('Total Capacity Lightpaths: {:.2f} Tbps'.format(np.sum(rbl) * 1e-3))
+    print('AvgCapacity: {:.2f} Gbps'.format(np.mean(rbc)))
 
 
 main()
